@@ -25,16 +25,27 @@
             border-top: 4px solid yellow;
             border-bottom: 4px solid yellow;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            display: flex;
+            align-items: center;
         }
+
+        .scrolling-wrapper {
+            display: flex;
+            width: 100%;
+            white-space: nowrap;
+            position: relative;
+        }
+
         .scrolling-text {
             display: flex;
-            width: max-content;
+            min-width: 200%;
             animation: marquee 10s linear infinite;
         }
+
         .scrolling-text span {
             font-size: 2em;
             font-weight: bold;
-            padding: 0 10px;
+            padding: 0 20px;
             color: yellow;
             text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
         }
@@ -123,9 +134,13 @@
 </head>
 <body>
     <div class="title-container">
-        <div class="scrolling-text">
-            <span>MY GAMES MY GAMES MY GAMES MY GAMES</span>
-            <span>MY GAMES MY GAMES MY GAMES MY GAMES</span>
+        <div class="scrolling-wrapper">
+            <div class="scrolling-text">
+                <span>MY GAMES MY GAMES MY GAMES MY GAMES</span>
+                <span>MY GAMES MY GAMES MY GAMES MY GAMES</span>
+                <span>MY GAMES MY GAMES MY GAMES MY GAMES</span>
+                <span>MY GAMES MY GAMES MY GAMES MY GAMES</span>
+            </div>
         </div>
     </div>
     
