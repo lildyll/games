@@ -8,7 +8,8 @@
         body {
             background-color: black;
             color: white;
-            font-family: Arial, sans-serif;
+            /*font-family: "YourCustomFont", Arial, sans-serif;*/
+            font-family: pixelFont; src: url("m5x7.ttf");
             text-align: center;
             margin: 0;
             padding: 0;
@@ -16,6 +17,11 @@
         header {
             padding: 20px;
             font-size: 2em;
+            position: relative;
+            animation: sineWave 3s alternate infinite ease-in-out;
+        }
+        @keyframes sineWave {
+            to {transform: translatey(15px);}
         }
         .game-container {
             display: flex;
