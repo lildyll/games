@@ -15,10 +15,9 @@
             padding: 0;
         }
 
-        /* News Ticker Banner */
+        /* Title Banner */
         .title-container {
             width: 100%;
-            overflow: hidden;
             position: relative;
             background: black;
             padding: 10px 0;
@@ -27,6 +26,15 @@
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
             display: flex;
             align-items: center;
+            flex-direction: column;
+        }
+
+        /* Centered Title */
+        .title-text {
+            font-size: 2em;
+            font-weight: bold;
+            color: yellow;
+            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
         }
 
         .scrolling-wrapper {
@@ -34,25 +42,27 @@
             width: 100%;
             white-space: nowrap;
             position: relative;
+            overflow: hidden;
         }
 
-        .scrolling-text {
+        /* Second Scrolling Text (Smaller, White) */
+        .scrolling-text-small {
             display: flex;
-            min-width: 200%;
-            animation: marquee 10s linear infinite;
+            min-width: 100%;
+            animation: marquee-small var(--animation-duration, 10s) linear infinite; /* Smaller text moves at a different speed */
         }
 
-        .scrolling-text span {
-            font-size: 2em;
-            font-weight: bold;
+        .scrolling-text-small span {
+            font-size: 1em;
+            font-weight: normal;
             padding: 0 20px;
-            color: yellow;
-            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
+            color: white;
+            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.3);
         }
 
-        @keyframes marquee {
-            from { transform: translateX(0); }
-            to { transform: translateX(-50%); }
+        @keyframes marquee-small {
+            from { transform: translateX(100%); }
+            to { transform: translateX(calc(-1 * var(--text-width, 100%))); }
         }
 
         /* Game Container */
@@ -60,17 +70,31 @@
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 20px;
+            gap: 40px;
             padding: 20px;
         }
 
-        /* Game Cards (TV Effect) */
+        /* Game Card Container (for TV and description placement) */
+        .game-item {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Alternate layout for even indexed games */
+        .game-item:nth-child(even) {
+            flex-direction: row-reverse;
+        }
+
+        /* Game Cards (TV Effect, Clickable) */
         .game-card {
             background: #111;
             color: white;
             padding: 15px;
             border-radius: 15px;
-            width: min(280px, 90%);
+            width: 280px;
             text-align: center;
             box-shadow: 
                 0 4px 8px rgba(255, 255, 255, 0.2),
@@ -78,9 +102,9 @@
             border: 10px solid black;
             position: relative;
             transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer; /* Make it look clickable */
         }
 
-        /* Add a glow when hovered */
         .game-card:hover {
             transform: scale(1.05);
             box-shadow: 
@@ -115,44 +139,169 @@
             margin-top: 10px;
         }
 
-        /* Game Play Button */
-        a {
-            display: inline-block;
-            margin-top: 10px;
-            padding: 8px 15px;
-            background: yellow;
-            color: black;
-            text-decoration: none;
-            font-weight: bold;
-            border-radius: 5px;
-            transition: background 0.3s ease;
+        /* Game Description */
+        .game-description {
+            max-width: 300px;
+            text-align: left;
         }
-        a:hover {
-            background: orange;
+
+        .game-item:nth-child(even) .game-description {
+            text-align: right;
+        }
+
+        /* Game Genre Label */
+        .game-genre {
+            font-size: 1em;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        /* Game Title Above Genre */
+        .game-title {
+            font-size: 1.5em;
+            font-weight: bold;
+            color: white;
+            margin-bottom: 5px;
+        }
+
+        .game-title-header {
+            color: white; /* White text */
+            padding: 10px; /* Add padding for better spacing */
+            margin: 0;
+            text-align: center; /* Center the text */
+            font-size: 1.5em;
+            border-radius: 5px; /* Optional: Adds rounded corners */
+        }
+
+        .game-release-date {
+            font-size: 1em;
+            font-weight: bold;
+            color: gray;
+            margin-top: 5px;
+        }
+        .game-development-info {
+            font-size: 0.9em;
+            color: lightgray;
+            margin-top: 8px;
+            border-top: 1px solid gray;
+            padding-top: 5px;
+        }
+        /* Specific background colors for different games */
+        .night-sweep-title {
+            background-color: #d70e0e; 
+        }
+
+        .code-blue-title {
+            background-color: #457b9d;
+        }
+
+        .blobby-title {
+            background-color: #0c2a2b; 
+        }
+
+        /* Responsive Design */
+        @media (max-width: 700px) {
+            .game-item {
+                flex-direction: column !important;
+                text-align: center;
+            }
+            .game-description {
+                text-align: center !important;
+                max-width: 100%;
+            }
         }
     </style>
 </head>
 <body>
     <div class="title-container">
+        <div class="title-text">MY GAMES</div> <!-- Centered Title -->
         <div class="scrolling-wrapper">
-            <div class="scrolling-text">
-                <span>MY GAMES MY GAMES MY GAMES MY GAMES</span>
-                <span>MY GAMES MY GAMES MY GAMES MY GAMES</span>
-                <span>MY GAMES MY GAMES MY GAMES MY GAMES</span>
-                <span>MY GAMES MY GAMES MY GAMES MY GAMES</span>
+            <div class="scrolling-text-small" id="news-ticker">
+                <span>Loading...</span>
             </div>
         </div>
     </div>
     
     <div class="game-container">
-        <!-- Night Sweep Game Card -->
-        <div class="game-card">
-            <img src="BigMode2025 Cover Screen.png" 
-            alt="Night Sweep">
-            <h2>Night Sweep</h2>
-            <p>Blast your way through your shift as a robotic janitor trying to clean up an infested building!</p>
-            <a href="https://lildyll.itch.io/nightsweep" target="_blank">Play Now</a>
+        <div class="game-item">
+            <div class="game-card" onclick="location.href='https://lildyll.itch.io/nightsweep';">
+                <img src="BigMode2025 Cover Screen.png" alt="Night Sweep">
+                <h2 class="game-title-header night-sweep-title">Night Sweep</h2>
+            </div>
+            <div class="game-description">
+                <div class="game-title">Night Sweep</div>
+                <div class="game-genre">Top-Down Shooter</div>
+                <p>Blast your way through your shift as a robotic janitor trying to clean up an infested building!</p>
+                <div class="game-release-date">Jan 2025</div>
+                <div class="game-development-info">
+                    <strong>Development:</strong> Created for the Big Mode Jam 2025 over the course of 10 days.
+                </div>
+            </div>
+        </div>
+
+        <div class="game-item">
+            <div class="game-card" onclick="location.href='https://lildyll.itch.io/code-blue';">
+                <img src="VimJam5 TitlePage.png" alt="Code Blue">
+                <h2 class="game-title-header code-blue-title">Code Blue</h2>
+            </div>
+            <div class="game-description">
+                <div class="game-title">Code Blue</div>
+                <div class="game-genre">Platformer</div>
+                <p>Swing, punch, jump, and climb to escape from the evil lab!</p>
+                <div class="game-release-date">Nov 2024</div>
+                <div class="game-development-info">
+                    <strong>Development:</strong> Created for the Vim Jam 2024 over the course of 10 days.
+                </div>
+            </div>
+        </div>
+
+        <div class="game-item">
+            <div class="game-card" onclick="location.href='https://lildyll.itch.io/blobby';">
+                <img src="Blobby CoverArt.png" alt="Blobby">
+                <h2 class="game-title-header blobby-title">Blobby</h2>
+            </div>
+            <div class="game-description">
+                <div class="game-title">Blobby</div>
+                <div class="game-genre">Platformer</div>
+                <p>Talk to clams, stomp on fish, and purchase upgrades to make Blobby even stronger! Can you find all the secrets?</p>
+                <div class="game-release-date">Apr 2023</div>
+                <div class="game-development-info">
+                    <strong>Development:</strong> Created as my senior project, focusing on the fields of Computer Science.
+                </div>
+            </div>
         </div>
     </div>
+
+    <script>
+        function updateMarquee(selector, speedPerPixel) {
+            const marqueeElement = document.querySelector(selector);
+            const textWidth = marqueeElement.scrollWidth;
+
+            // Set CSS variables dynamically
+            marqueeElement.style.setProperty("--text-width", `${textWidth}px`);
+            marqueeElement.style.setProperty("--start-position", "100%");
+            
+            // Calculate animation duration dynamically based on text length
+            const duration = textWidth * speedPerPixel; 
+            marqueeElement.style.setProperty("--animation-duration", `${duration}s`);
+        }
+
+        const textPool = [
+            "BREAKING NEWS: Developer lildyll has been found in his room CODING. More updates at 11.",
+            "BREAKING NEWS: Some sources say that playing video games IS good for your health. Others are too busy playing games to report.",
+            "BREAKING NEWS: The Reveal: An exclusive eye witness report has claimed they know the Muffin Man.",
+            "BREAKING NEWS: We are trying to reach you about your car's extended warranty.",
+            "BREAKING NEWS: Sources report that people hate run-on sentences while others believe they are necessary, however, some say it leads to boring scrolls of text that go on and on and never seem to reach a conclusion. More on that at 10."
+        ];
+
+        function createNewsTicker() {
+            const shuffledText = textPool.sort(() => 0.5 - Math.random()).slice(0, textPool.length).join(" | ");
+            document.getElementById("news-ticker").innerHTML = `<span>${shuffledText} | </span>`;
+        }
+
+        createNewsTicker();
+        updateMarquee(".scrolling-text-small", 0.02);
+    </script>
 </body>
 </html>
