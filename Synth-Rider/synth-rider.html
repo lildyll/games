@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MY GAMES</title>
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Georgia', Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    audio {
+        display: block;
+        margin: 8px auto;
+        width: 300px;
+     }
+
+    
+    .site-header {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .site-header a {
+      font-family: 'Anonymous Pro', Arial, sans-serif;
+      font-size: 1em;
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .site-header a:hover {
+      background-color: white;
+      color: black;
+    }
+
+    .site-header .active {
+      border: 2px solid white;
+    }
+
+    
+
+    .title-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5em;
+      font-weight: bold;
+      color: white;
+      text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.2);
+      margin: 20px 0;
+    }
+
+    .game-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      padding: 40px 20px;
+    }
+
+    .game-card {
+      background: #111;
+      color: white;
+      padding: 15px;
+      border-radius: 15px;
+      width: 280px;
+      text-align: center;
+      box-shadow: 
+        0 4px 8px rgba(255, 255, 255, 0.2),
+        inset 0 0 8px rgba(255, 255, 255, 0.1);
+      border: 10px solid black;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .game-card:hover {
+      transform: scale(1.05);
+      box-shadow: 
+        0 6px 12px rgba(255, 255, 255, 0.3), 
+        inset 0 0 12px rgba(255, 255, 255, 0.2);
+    }
+
+   
+
+    .game-card img {
+      width: 100%;
+      border-radius: 5px;
+      display: block;
+      border: 3px solid #222;
+    }
+
+    .game-card h2 {
+      font-size: 1.5em;
+      margin-top: 10px;
+      padding: 10px;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .game-tagline {
+        font-size: 0.9em;
+        color: lightgray;
+        margin-top: 5px;
+        padding: 0 10px;
+        }
+
+
+    /* Title Colors */
+    .synth-rider-title {
+      background-color: #222323;
+    }
+
+    .night-sweep-title {
+      background-color: #d70e0e;
+    }
+
+    .code-blue-title {
+      background-color: #457b9d;
+    }
+
+    .blobby-title {
+      background-color: #0c2a2b;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+    
+    .content-section {
+        width: 75%;
+        margin: 40px auto;
+        background-color: #222323;
+        border-left: 4px solid #f0f6f0;
+        border-right: 4px solid #f0f6f0;
+        padding: 12px 0;
+        box-sizing: border-box;
+        border-radius: 8px;
+    }
+
+
+
+
+    .game-hero img {
+    width: 75%;
+    max-height: 500px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    
+    }
+
+    .game-page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8em;
+    margin: 30px 0 10px;
+    color: #f0f6f0;
+    }
+
+    .tools-used {
+    font-size: 1em;
+    color: lightgray;
+    margin-bottom: 40px;
+    }
+
+    .section {
+    max-width: 400px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+    text-align: justify;
+    }
+
+    .section img {
+        display: block;
+        margin: 20px auto;
+        max-width: 100%;
+        height: auto;
+        border: 6px solid #f0f6f0;
+        border-radius: 4px;
+    }
+
+    .section-title {
+    font-size: 1.5em;
+    color: #f0f6f0;
+    margin-bottom: 10px;
+    text-align: center;
+    text-underline-offset: 2px;
+    }
+
+    .section-content {
+    font-size: 1em;
+    color: #f0f6f0;
+    line-height: 1.6;
+    }
+
+  </style>
+</head>
+<body>
+
+    <div class="site-header">
+      <a href="https://lildyll.github.io/">Home</a>
+      <a href="index.html" class="active">Games</a>
+      <a href="about.html">About</a>
+    </div>
+  
+    <div class="title-container">
+      <div class="title-text">MY GAMES</div>
+    </div>
+  
+    <!-- Hero Image -->
+    <div class="content-section">
+        <div class="game-hero">
+        <img src="1BIT_2025 Cover_Logo.png" alt="Synth Rider">
+        </div>
+    
+        <!-- Game Title -->
+        
+    
+        <!-- Tools Used -->
+        <p class="tools-used">Made with <u>GameMaker Studio 2</u>, <u>Garage Band</u>, and <u>Aseprite</u></p>
+    
+        <!--Embed a youtube video showcasing a playthrough-->
+
+        <!-- Overview Section -->
+        <div class="section">
+        <h2 class="section-title"><u>Overview</u></h2>
+        <p class="section-content">
+            Skate your way through this hypnotic rhythm adventure with your incredible tricks! Kick your feet and kick the beat and get a killer high score!
+<br>This rhythm game was made in 1 week for the 1 Bit Game Jam.
+        </p>
+        <h2 class="section-title"><u>Design Process</u></h2>
+        <p class="section-content">
+            The theme for this 1bit Game Jam was <b>beat</b>. Before even beginning any code, I thought it would be interesting to make a rhythm
+            game starting with the song:
+        </p>
+        <p class="text-center">
+            Synth Rider Main Theme
+        </p>
+        <audio controls>
+            <source src="Snyth Rider - 4_6_25, 2.41 PM.mp3" type="audio/mpeg">
+            Your browser does not support the audio element.
+          </audio>
+          
+        <p class="section-content">
+            The song kept giving me a visual of a cool skater that could "<i>ride the beat</i>." I began designing the character with
+            inspiration from other 1-bit games:
+        </p>
+        <img src="1BIT_2025 Player_Prev.PNG">
+        <p class="section-content">
+            Originally, there was a section at the top of the screen for timing the jumps and tricks. However, through playtesting, it was
+            clear that players would focus on the bar rather than the trick animations. Therefore it was removed.
+        </p>
+        <img src="1BIT_2025 Prev_Layout.png">
+        <p class="section-content">
+            As someone who has never skateboarded, I did plenty of research for real and fake tricks. Starting with the kick flip 
+            created a perfect foundation for the other tricks. 
+        </p>
+        </div>
+        <div class="text-center" style="border: 6px solid #f0f6f0;
+        border-radius: 4px; width: 400px; margin: 20px auto;">
+        <img src="1BIT_2025 Player_KickFlip.gif">
+        <img src="1BIT_2025 Player_Flip.gif">
+        <img src="1BIT_2025 Player_FrenchGirl.gif">
+        <img src="1BIT_2025 Player_Peacel.gif">
+      </div>
+      <div class="section">
+        <p class="section-content">
+            The tricks got goofier as production continued and there was more time to have fun. Then, it felt neccessary to add fun
+            attack animations for hitting the notes... <i>literally!</i>
+        </p>
+        </div>
+        <div class="text-center" style="border: 6px solid #f0f6f0;
+        border-radius: 4px; width: 400px; margin: 20px auto;">
+        <img src="1BIT_2025 Player_BoardHit.gif">
+        <img src="1BIT_2025 Player_BoardSlam.gif">
+      </div>
+      <div class="section">
+        <p class="section-content">
+          Once screenshake, explosions, and hitfreeze were added, it all came together!
+      </p>
+      <!--Insert a longer gif showcasing some gameplay-->
+      </div>
+    </div>
+  
+  </body>
+  
+</html>

@@ -1,329 +1,169 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MY GAMES</title>
-    <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            background-color: black;
-            color: white;
-            font-family: 'Doto', Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>MY GAMES</title>
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Georgia', Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    .site-header {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .site-header a {
+      font-family: 'Anonymous Pro', Arial, sans-serif;
+      font-size: 1em;
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .site-header a:hover {
+      background-color: white;
+      color: black;
+    }
+
+    .site-header .active {
+      border: 2px solid white;
+    }
+
+    
+
+    .title-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5em;
+      font-weight: bold;
+      color: white;
+      text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.2);
+      margin: 20px 0;
+    }
+
+    .game-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      padding: 40px 20px;
+    }
+
+    .game-card {
+      background: #111;
+      color: white;
+      padding: 15px;
+      border-radius: 15px;
+      width: 280px;
+      text-align: center;
+      box-shadow: 
+        0 4px 8px rgba(255, 255, 255, 0.2),
+        inset 0 0 8px rgba(255, 255, 255, 0.1);
+      border: 10px solid black;
+      position: relative;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .game-card:hover {
+      transform: scale(1.05);
+      box-shadow: 
+        0 6px 12px rgba(255, 255, 255, 0.3), 
+        inset 0 0 12px rgba(255, 255, 255, 0.2);
+    }
+
+   
+
+    .game-card img {
+      width: 100%;
+      border-radius: 5px;
+      display: block;
+      border: 3px solid #222;
+    }
+
+    .game-card h2 {
+      font-size: 1.5em;
+      margin-top: 10px;
+      padding: 10px;
+      color: white;
+      border-radius: 5px;
+    }
+
+    .game-tagline {
+        font-size: 0.9em;
+        color: lightgray;
+        margin-top: 5px;
+        padding: 0 10px;
         }
 
-        /* Title Banner */
-        .title-container {
-            width: 100%;
-            position: relative;
-            background: black;
-            padding: 10px 0;
-            border-top: 4px solid yellow;
-            border-bottom: 4px solid yellow;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
-            display: flex;
-            align-items: center;
-            flex-direction: column;
-        }
 
-        /* Centered Title */
-        .title-text {
-            font-size: 2em;
-            font-weight: bold;
-            color: yellow;
-            text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.5);
-        }
+    /* Title Colors */
+    .synth-rider-title {
+      background-color: #222323;
+    }
 
-        .scrolling-wrapper {
-            display: flex;
-            width: 100%;
-            white-space: nowrap;
-            position: relative;
-            overflow: hidden;
-        }
+    .night-sweep-title {
+      background-color: #d70e0e;
+    }
 
-        /* Second Scrolling Text (Smaller, White) */
-        .scrolling-text-small {
-            display: flex;
-            min-width: 100%;
-            animation: marquee-small var(--animation-duration, 10s) linear infinite; /* Smaller text moves at a different speed */
-        }
+    .code-blue-title {
+      background-color: #457b9d;
+    }
 
-        .scrolling-text-small span {
-            font-size: 1em;
-            font-weight: normal;
-            padding: 0 20px;
-            color: white;
-            text-shadow: 1px 1px 3px rgba(255, 255, 255, 0.3);
-        }
-
-        @keyframes marquee-small {
-            from { transform: translateX(100%); }
-            to { transform: translateX(calc(-1 * var(--text-width, 100%))); }
-        }
-
-        /* Game Container */
-        .game-container {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 40px;
-            padding: 20px;
-        }
-
-        /* Game Card Container (for TV and description placement) */
-        .game-item {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        /* Alternate layout for even indexed games */
-        .game-item:nth-child(even) {
-            flex-direction: row-reverse;
-        }
-
-        /* Game Cards (TV Effect, Clickable) */
-        .game-card {
-            background: #111;
-            color: white;
-            padding: 15px;
-            border-radius: 15px;
-            width: 280px;
-            text-align: center;
-            box-shadow: 
-                0 4px 8px rgba(255, 255, 255, 0.2),
-                inset 0 0 8px rgba(255, 255, 255, 0.1);
-            border: 10px solid black;
-            position: relative;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            cursor: pointer; /* Make it look clickable */
-        }
-
-        .game-card:hover {
-            transform: scale(1.05);
-            box-shadow: 
-                0 6px 12px rgba(255, 255, 255, 0.3), 
-                inset 0 0 12px rgba(255, 255, 255, 0.2);
-        }
-
-        /* Simulating a TV screen reflection */
-        .game-card::before {
-            content: "";
-            position: absolute;
-            top: 5%;
-            left: 10%;
-            width: 80%;
-            height: 10%;
-            background: rgba(255, 255, 255, 0.1);
-            border-radius: 50%;
-            filter: blur(5px);
-        }
-
-        /* Game Image (TV Screen) */
-        .game-card img {
-            width: 100%;
-            border-radius: 5px;
-            display: block;
-            border: 3px solid #222;
-        }
-
-        /* Game Title */
-        .game-card h2 {
-            font-size: 1.5em;
-            margin-top: 10px;
-        }
-
-        /* Game Description */
-        .game-description {
-            max-width: 300px;
-            text-align: left;
-        }
-
-        .game-item:nth-child(even) .game-description {
-            text-align: right;
-        }
-
-        /* Game Genre Label */
-        .game-genre {
-            font-size: 1em;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 5px;
-        }
-
-        /* Game Title Above Genre */
-        .game-title {
-            font-size: 1.5em;
-            font-weight: bold;
-            color: white;
-            margin-bottom: 5px;
-        }
-
-        .game-title-header {
-            color: white; /* White text */
-            padding: 10px; /* Add padding for better spacing */
-            margin: 0;
-            text-align: center; /* Center the text */
-            font-size: 1.5em;
-            border-radius: 5px; /* Optional: Adds rounded corners */
-        }
-
-        .game-release-date {
-            font-size: 1em;
-            font-weight: bold;
-            color: gray;
-            margin-top: 5px;
-        }
-        .game-development-info {
-            font-size: 0.9em;
-            color: lightgray;
-            margin-top: 8px;
-            border-top: 1px solid gray;
-            padding-top: 5px;
-        }
-        /* Specific background colors for different games */
-        .night-sweep-title {
-            background-color: #d70e0e; 
-        }
-
-        .code-blue-title {
-            background-color: #457b9d;
-        }
-
-        .blobby-title {
-            background-color: #0c2a2b; 
-        }
-
-        .synth-rider-title {
-            background-color: #222323; 
-        }
-
-        /* Responsive Design */
-        @media (max-width: 700px) {
-            .game-item {
-                flex-direction: column !important;
-                text-align: center;
-            }
-            .game-description {
-                text-align: center !important;
-                max-width: 100%;
-            }
-        }
-    </style>
+    .blobby-title {
+      background-color: #0c2a2b;
+    }
+  </style>
 </head>
 <body>
-    <div class="title-container">
-        <div class="title-text">MY GAMES</div> <!-- Centered Title -->
-        <div class="scrolling-wrapper">
-            <div class="scrolling-text-small" id="news-ticker">
-                <span>Loading...</span>
-            </div>
-        </div>
-    </div>
-    
-    <div class="game-container">
-        <div class="game-item">
-            <div class="game-card" onclick="location.href='https://lildyll.itch.io/nightsweep';">
-                <img src="BigMode2025 Cover Screen.png" alt="Night Sweep">
-                <h2 class="game-title-header night-sweep-title">Night Sweep</h2>
-            </div>
-            <div class="game-description">
-                <div class="game-title">Night Sweep</div>
-                <div class="game-genre">Top-Down Shooter</div>
-                <p>Blast your way through your shift as a robotic janitor trying to clean up an infested building!</p>
-                <div class="game-release-date">Jan 2025</div>
-                <div class="game-development-info">
-                    <strong>Development:</strong> Created for the Big Mode Jam 2025 over the course of 10 days.
-                </div>
-            </div>
-        </div>
 
-        <div class="game-item">
-            <div class="game-card" onclick="location.href='https://lildyll.itch.io/synth-rider';">
-                <img src="1BIT_2025 Cover.png" alt="Synth Rider">
-                <h2 class="game-title-header synth-rider-title">Synth Rider</h2>
-            </div>
-            <div class="game-description">
-                <div class="game-title">Synth Rider</div>
-                <div class="game-genre">Rhythm</div>
-                <p>Skate your way through this hypnotic rhythm adventure with your incredible tricks!</p>
-                <div class="game-release-date">Apr 2025</div>
-                <div class="game-development-info">
-                    <strong>Development:</strong> Created for the 1BIT Jam 2025 over the course of 7 days.
-                </div>
-            </div>
-        </div>
+  <div class="site-header">
+    <a href="https://lildyll.github.io/">Home</a>
+    <a href="index.html" class="active">Games</a>
+    <a href="about.html">About</a>
+  </div>
 
-        <div class="game-item">
-            <div class="game-card" onclick="location.href='https://lildyll.itch.io/code-blue';">
-                <img src="VimJam5 TitlePage.png" alt="Code Blue">
-                <h2 class="game-title-header code-blue-title">Code Blue</h2>
-            </div>
-            <div class="game-description">
-                <div class="game-title">Code Blue</div>
-                <div class="game-genre">Platformer</div>
-                <p>Swing, punch, jump, and climb to escape from the evil lab!</p>
-                <div class="game-release-date">Nov 2024</div>
-                <div class="game-development-info">
-                    <strong>Development:</strong> Created for the Vim Jam 2024 over the course of 10 days.
-                </div>
-            </div>
-        </div>
+  <div class="title-container">
+    <div class="title-text">MY GAMES</div>
+  </div>
 
-        <div class="game-item">
-            <div class="game-card" onclick="location.href='https://lildyll.itch.io/blobby';">
-                <img src="Blobby CoverArt.png" alt="Blobby">
-                <h2 class="game-title-header blobby-title">Blobby</h2>
-            </div>
-            <div class="game-description">
-                <div class="game-title">Blobby</div>
-                <div class="game-genre">Platformer</div>
-                <p>Talk to clams, stomp on fish, and purchase upgrades to make Blobby even stronger! Can you find all the secrets?</p>
-                <div class="game-release-date">Apr 2023</div>
-                <div class="game-development-info">
-                    <strong>Development:</strong> Created as my senior project, focusing on the fields of Computer Science.
-                </div>
-            </div>
-        </div>
-
-
+  <div class="game-container">
+    <div class="game-card" onclick="location.href='Synth-Rider/synth-rider.html'">
+      <img src="1BIT_2025 Cover.png" alt="Synth Rider">
+      <h2 class="game-title-header synth-rider-title">Synth Rider</h2>
+      <p class="game-tagline">Skate your way through this hypnotic rhythm adventure with your incredible tricks!</p>
     </div>
 
-    <script>
-        function updateMarquee(selector, speedPerPixel) {
-            const marqueeElement = document.querySelector(selector);
-            const textWidth = marqueeElement.scrollWidth;
+    <div class="game-card" onclick="location.href='https://lildyll.itch.io/nightsweep';">
+      <img src="BigMode2025 Cover Screen.png" alt="Night Sweep">
+      <h2 class="game-title-header night-sweep-title">Night Sweep</h2>
+      <p class="game-tagline">Blast your way through your shift as a robotic janitor trying to clean up an infested building!</p>
+    </div>
 
-            // Set CSS variables dynamically
-            marqueeElement.style.setProperty("--text-width", `${textWidth}px`);
-            marqueeElement.style.setProperty("--start-position", "100%");
-            
-            // Calculate animation duration dynamically based on text length
-            const duration = textWidth * speedPerPixel; 
-            marqueeElement.style.setProperty("--animation-duration", `${duration}s`);
-        }
+    <div class="game-card" onclick="location.href='https://lildyll.itch.io/code-blue';">
+      <img src="VimJam5 TitlePage.png" alt="Code Blue">
+      <h2 class="game-title-header code-blue-title">Code Blue</h2>
+      <p class="game-tagline">Swing, punch, jump, and climb to escape from the evil lab!</p>
+    </div>
 
-        const textPool = [
-            "BREAKING NEWS: Developer lildyll has been found in his room CODING. More updates at 11.",
-            "BREAKING NEWS: Some sources say that playing video games IS good for your health. Others are too busy playing games to report.",
-            "BREAKING NEWS: The Reveal: An exclusive eye witness report has claimed they know the Muffin Man.",
-            "BREAKING NEWS: We are trying to reach you about your car's extended warranty.",
-            "BREAKING NEWS: Sources report that people hate run-on sentences while others believe they are necessary, however, some say it leads to boring scrolls of text that go on and on and never seem to reach a conclusion. More on that at 10."
-        ];
+    <div class="game-card" onclick="location.href='https://lildyll.itch.io/blobby';">
+      <img src="Blobby CoverArt.png" alt="Blobby">
+      <h2 class="game-title-header blobby-title">Blobby</h2>
+      <p class="game-tagline">Talk to clams, stomp on fish, and purchase upgrades to make Blobby even stronger! Can you find all the secrets? </p>
+    </div>
+  </div>
 
-        function createNewsTicker() {
-            const shuffledText = textPool.sort(() => 0.5 - Math.random()).slice(0, textPool.length).join(" | ");
-            document.getElementById("news-ticker").innerHTML = `<span>${shuffledText} | </span>`;
-        }
-
-        createNewsTicker();
-        updateMarquee(".scrolling-text-small", 0.02);
-    </script>
 </body>
 </html>
