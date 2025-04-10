@@ -219,6 +219,19 @@
     line-height: 1.6;
     }
 
+    #typewriter-cursor {
+      display: inline-block;
+      animation: blink-cursor 1s steps(1) infinite;
+      color: white;
+      font-weight: bold;
+      margin-left: 2px;
+    }
+
+    @keyframes blink-cursor {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+
   </style>
 </head>
 <body>
@@ -230,7 +243,9 @@
   </div>
   
     <div class="title-container">
-      <div class="title-text">MY GAMES</div>
+      <div class="title-text">
+        <span id="typewriter-text"></span><span id="typewriter-cursor">_</span>
+      </div>
     </div>
   
     <!-- Hero Image -->
@@ -311,6 +326,23 @@
       </div>
     </div>
   
+    <script>
+      const text = "synth rider";
+      const textEl = document.getElementById("typewriter-text");
+    
+      let i = 0;
+    
+      function typeWriter() {
+        if (i < text.length) {
+          textEl.textContent += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, 100); // adjust speed here
+        }
+      }
+    
+      typeWriter();
+    </script>
+
   </body>
   
 </html>
