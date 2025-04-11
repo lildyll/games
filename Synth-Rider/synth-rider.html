@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Synth Rider</title>
+  <link rel="icon" href="Website Favicon.png" type="image/png"/>
   <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
   <style>
     body {
@@ -219,6 +220,26 @@
     line-height: 1.6;
     }
 
+    .youtube-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      margin: 30px auto;
+    }
+
+    .youtube-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+
+
     #typewriter-cursor {
       display: inline-block;
       animation: blink-cursor 1s steps(1) infinite;
@@ -261,6 +282,14 @@
         <p class="tools-used">Made with <u>GameMaker Studio 2</u>, <u>Garage Band</u>, and <u>Aseprite</u></p>
     
         <!--Embed a youtube video showcasing a playthrough-->
+        <div class="youtube-wrapper">
+          <iframe 
+            src="https://www.youtube.com/embed/9vEwY1NGKPg?si=eFSVNYk6qtyvXIG9" 
+            title="Synth Rider Gameplay" 
+            frameborder="0" 
+            allowfullscreen>
+          </iframe>
+        </div>
 
         <a href="https://lildyll.itch.io/synth-rider" class="play-link">Link to Play</a>
 
