@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>night sweep</title>
+  <link rel="icon" href="Website Favicon.png" type="image/png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Georgia', Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    audio {
+        display: block;
+        margin: 8px auto;
+        width: 300px;
+     }
+
+     .play-link {
+      cursor: pointer;
+      color: #170b1a;
+      font-weight: bold;
+      margin-top: 20px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .play-link:hover {
+      color: #fff9b3;
+      background-color: #170b1a;
+      border-radius: 4px;
+      padding: 10px;
+      text-decoration: underline;
+    }
+
+    
+    .site-header {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .site-header a {
+      font-family: 'Anonymous Pro', Arial, sans-serif;
+      font-size: 1em;
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .site-header a:hover {
+      background-color: white;
+      color: black;
+    }
+
+    .site-header .active {
+      border: 2px solid white;
+    }
+
+    
+
+    .title-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5em;
+      font-weight: bold;
+      color: white;
+      text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.2);
+      margin: 20px 0;
+    }
+
+
+    .game-tagline {
+        font-size: 0.9em;
+        color: lightgray;
+        margin-top: 5px;
+        padding: 0 10px;
+        }
+
+
+    /* Title Colors */
+    .synth-rider-title {
+      background-color: #222323;
+    }
+
+    .night-sweep-title {
+      background-color: #d70e0e;
+    }
+
+    .code-blue-title {
+      background-color: #457b9d;
+    }
+
+    .blobby-title {
+      background-color: #0c2a2b;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+    
+    .content-section {
+        width: 75%;
+        margin: 40px auto;
+        background-color: #871e2e;
+        border-left: 4px solid #170b1a;
+        border-right: 4px solid #170b1a;
+        padding: 12px 0;
+        box-sizing: border-box;
+        border-radius: 8px;
+    }
+
+
+
+
+    .game-hero img {
+    width: 75%;
+    max-height: 500px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    
+    }
+
+    .game-page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8em;
+    margin: 30px 0 10px;
+    color: white;
+    }
+
+    .tools-used {
+    font-size: 1em;
+    color: #fff9b3;
+    margin-bottom: 40px;
+    }
+
+    .section {
+    max-width: 400px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+    text-align: justify;
+    }
+
+    .section img {
+        display: block;
+        margin: 20px auto;
+        max-width: 100%;
+        height: auto;
+        border: 6px solid #fff9b3;
+        border-radius: 4px;
+    }
+
+    .section-title {
+    font-size: 1.5em;
+    color: #fff9b3;
+    margin-bottom: 10px;
+    text-align: center;
+    text-underline-offset: 2px;
+    }
+
+    .section-content {
+    font-size: 1em;
+    color: #fff9b3;
+    line-height: 1.6;
+    }
+
+    .youtube-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      margin: 30px auto;
+    }
+
+    .youtube-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+
+
+    #typewriter-cursor {
+      display: inline-block;
+      animation: blink-cursor 1s steps(1) infinite;
+      color: white;
+      font-weight: bold;
+      margin-left: 2px;
+    }
+
+    @keyframes blink-cursor {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="site-header">
+    <a href="https://lildyll.github.io">Home</a>
+    <a href="https://lildyll.github.io/games" class="active">Games</a>
+    <a href="https://lildyll.github.io/about">About</a>
+  </div>
+  
+    <div class="title-container">
+      <div class="title-text">
+        <span id="typewriter-text"></span><span id="typewriter-cursor">_</span>
+      </div>
+    </div>
+  
+    <!-- Hero Image -->
+    <div class="content-section">
+        <div class="game-hero">
+        <img src="CSULB_Circus Cover Logo.png" alt="Night Sweep Logo">
+        </div>
+    
+        <!-- Game Title -->
+        
+    
+        <!-- Tools Used -->
+         <div class="tools-used">
+        <p>Contributed with <u>GameMaker Studio 2</u> and <u>Aseprite</u><br>
+        Music and SFX by 
+        <a href="https://8bitdits.itch.io" class="tools-used" style="color: #170b1a">8BitDits</a></p>
+    </div>
+        <!--Embed a youtube video showcasing a playthrough-->
+        <div class="youtube-wrapper">
+          <iframe 
+            src="https://www.youtube.com/embed/gihJToZ7BaA?si=qelEsGi0lZXVEgPP" 
+            title="Circus of Groove Gameplay" 
+            frameborder="0" 
+            allowfullscreen>
+          </iframe>
+        </div>
+
+        <a href="https://lildyll.itch.io/circus-of-groove" class="play-link">Link to Play</a>
+
+
+        <!-- Overview Section -->
+        <div class="section">
+        <h2 class="section-title"><u>Overview</u></h2>
+        <p class="section-content">
+            Use the whole keyboard to catch the beat! Tame a lion, walk the tightrope, and ride a tricycle through 3 unique takes on the rhythm genre!<br>
+            This game was made in 2 weeks for the CSULB Spring VGDA Game Jam.
+        </p>
+        <h2 class="section-title"><u>Design Process</u></h2>
+        <p class="section-content">
+            The theme for this Game Jam was <b>Circus</b>. 8BitDits immediately thought of the structure of a circus performance and thought it would 
+            be a perfect opportunity to create a few mini games. We've always wanted to make a rhythm game together and this seemed like the perfect opportunity.
+            <br><br>After chosing a color palette we thought would match the circus vibe, 8BitDits immediately cooked up this lion drawing.
+        </p>
+        <img src="CSULB_Circus Lion.png">
+        <p class="section-content">
+            Then, almost at the same time, I sent over my idea for the top-down racing bear. You can see the evolution below.
+        </p>
+        <img src="CSULB_Circus Bears.png">
+        <p class="section-content">
+            As these were both completed seperately, the art styles were very different. Not only that, but the perspectives were different too! 
+            This already set a foundation that each mini game would focus on different ideas for visuals and gameplay while still maintaining the same 
+            cohesive style.<br><br>
+            Clown Jumpscare!!
+        </p>
+        <img src="CSULB_Circus Clown.png">
+       </div>  
+      <div class="section">
+        <p class="section-content">
+            The left clown is the original clown I started with. I was trying very hard to get the angle and proportions right, but I was not loving it. 
+            I scrapped it and decided focus on the head before working on the challenging body position. That's what turned into the one on the right which looks a lot 
+            more cartooney and fun, perfect for our vibe!
+            
+        </p>
+      </div>
+      <h2 class="section-title"><u>Results</u></h2>
+      <div class="section">
+        <p class="section-content">
+          In the showcase meeting at the end of the year, we were awarded 2 awards! <br>
+          We received the "Best Art Award" from the Judges which was a huge honor!
+          <img src="Best Art 2025.jpg">
+          Then, after each club member voted for their favorite game, we were awarded the "People's Choice Award".
+          <img src="People's Choice Award 2025.jpg">
+
+        </p>
+        
+        
+     
+    </div>
+    </div>
+  
+    <script>
+      const text = "circus of groove";
+      const textEl = document.getElementById("typewriter-text");
+    
+      let i = 0;
+    
+      function typeWriter() {
+        if (i < text.length) {
+          textEl.textContent += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, 100); // adjust speed here
+        }
+      }
+    
+      typeWriter();
+    </script>
+
+  </body>
+  
+</html>
