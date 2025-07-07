@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>blobby run</title>
+  <link rel="icon" href="Website Favicon.png" type="image/png"/>
+  <link href="https://fonts.googleapis.com/css2?family=Doto:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+
+
+    body {
+      background-color: black;
+      color: white;
+      font-family: 'Georgia', Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 0;
+    }
+
+    audio {
+        display: block;
+        margin: 8px auto;
+        width: 300px;
+     }
+
+     .play-link {
+      cursor: pointer;
+      color: #0097a7;
+      font-weight: bold;
+      margin-top: 20px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .play-link:hover {
+      color: white;
+      background-color: #0097a7;
+      border-radius: 4px;
+      padding: 10px;
+      text-decoration: underline;
+    }
+
+    
+    .site-header {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-top: 10px;
+      margin-bottom: 5px;
+    }
+
+    .site-header a {
+      font-family: 'Anonymous Pro', Arial, sans-serif;
+      font-size: 1em;
+      color: white;
+      text-decoration: none;
+      padding: 8px 16px;
+      border-radius: 5px;
+      transition: background 0.3s ease, color 0.3s ease;
+    }
+
+    .site-header a:hover {
+      background-color: white;
+      color: black;
+    }
+
+    .site-header .active {
+      border: 2px solid white;
+    }
+
+    
+
+    .title-text {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5em;
+      font-weight: bold;
+      color: white;
+      text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.2);
+      margin: 20px 0;
+    }
+
+    .toc {
+      margin-top: 20px;
+      margin-bottom: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .toc a {
+      font-family: 'Anonymous Pro', monospace;
+      color: white;
+      text-decoration: none;
+      font-size: 1em;
+      padding: 6px 12px;
+      border: 1px solid white;
+      border-radius: 4px;
+      transition: background 0.3s, color 0.3s;
+    }
+
+    .toc a:hover {
+      background-color: white;
+      color: black;
+    }
+
+
+    .game-tagline {
+        font-size: 0.9em;
+        color: lightgray;
+        margin-top: 5px;
+        padding: 0 10px;
+        }
+
+
+    /* Title Colors */
+    .synth-rider-title {
+      background-color: #222323;
+    }
+
+    .night-sweep-title {
+      background-color: #d70e0e;
+    }
+
+    .code-blue-title {
+      background-color: #457b9d;
+    }
+
+    .blobby-title {
+      background-color: #0c2a2b;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+    
+    .content-section {
+        width: 75%;
+        margin: 40px auto;
+        background-color: #0c2a2b;
+        border-left: 4px solid #0097a7;
+        border-right: 4px solid #0097a7;
+        padding: 12px 0;
+        box-sizing: border-box;
+        border-radius: 8px;
+    }
+
+
+
+
+    .game-hero img {
+    width: 50%;
+    max-height: 300px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+    
+    }
+
+    .game-page-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.8em;
+    margin: 30px 0 10px;
+    color: white;
+    }
+
+    .tools-used {
+    font-size: 1em;
+    color: white;
+    margin-bottom: 40px;
+    }
+
+    .section {
+    max-width: 600px;
+    margin: 0 auto 60px;
+    padding: 0 20px;
+    text-align: justify;
+    }
+
+    .section img {
+        display: block;
+        margin: 20px auto;
+        max-width: 80%;
+        height: auto;
+        border: 4px solid #0097a7;
+        border-radius: 4px;
+    }
+
+    .section-title {
+    font-size: 1.5em;
+    color: white;
+    margin-bottom: 10px;
+    text-align: center;
+    text-underline-offset: 2px;
+    }
+
+    .section-content {
+    font-size: 1em;
+    color: white;
+    line-height: 1.6;
+    }
+
+    .youtube-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      margin: 30px auto;
+    }
+
+    .youtube-wrapper iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+
+    .video-wrapper {
+      position: relative;
+      padding-bottom: 56.25%; /* 16:9 aspect ratio */
+      height: 0;
+      overflow: hidden;
+      max-width: 100%;
+      margin: 30px auto;
+    }
+
+    .video-wrapper video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.1);
+    }
+
+
+    #typewriter-cursor {
+      display: inline-block;
+      animation: blink-cursor 1s steps(1) infinite;
+      color: white;
+      font-weight: bold;
+      margin-left: 2px;
+    }
+
+    @keyframes blink-cursor {
+      0%, 100% { opacity: 0; }
+      50% { opacity: 1; }
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="site-header">
+    <a href="https://lildyll.github.io">Home</a>
+    <a href="https://lildyll.github.io/games" class="active">Games</a>
+    <a href="https://lildyll.github.io/about">About</a>
+  </div>
+  
+    <div class="title-container">
+      <div class="title-text">
+        <span id="typewriter-text"></span><span id="typewriter-cursor">_</span>
+      </div>
+
+      
+
+    </div>
+  
+    <!-- Hero Image -->
+    <div class="content-section">
+        <div class="game-hero">
+        <img src="Blobby Run Cover.png" alt="Blobby Run Logo">
+        </div>
+    
+        <!-- Game Title -->
+        
+    
+        <!-- Tools Used -->
+        <p class="tools-used">Made with <u>GameMaker Studio 2</u>, <u>Garage Band</u>, and <u>Aseprite</u></p>
+        <div class="video-wrapper">
+          <video controls>
+            <source src="Blobby 1.3 Trailer.mp4" type="video/mp4" />
+            Blobby Run 1.3 Update Trailer
+          </video>
+        </div>
+
+
+        <a href="https://apps.apple.com/us/app/blobby-run/id6468387343" class="play-link">Link to Appstore</a>
+
+        <div class="toc">
+        <a href="#design">Design</a>
+        <a href="#art">Art</a>
+        <a href="#bosses">Bosses</a>
+        <a href="#music">Music</a>
+        <a href="#updates">Updates</a>
+      </div>
+
+
+        <!-- Overview Section -->
+        <div class="section">
+        <h2 id="design" class="section-title"><u>Design Process</u></h2>
+        <p class="section-content">
+           <!--put in about me: My favorite thing about game development is the euphoric feeling you get when you show someone your finished project. -->
+            This game was heavily inspired by my love for Geometry Dash and Subway Surfers. I wanted to combine my favorite aspects of both: 
+            difficult but fair sight-reading and endless running. <br>
+            <img src="BlobbyRunGif 1.0_1.gif">
+            Then, I wanted to include an exciting way to collect new Blobby skins. I designed a podium animation to make the silly skins 
+            have a much needed dramatic flair. Naturally, it needed confetti as well. <br>
+            <img src="BlobbyRunGif 1.0_2.gif">
+            Originally, after reaching a certain distance, there would be a boss fight. However, I realized that this would be jarring and 
+            doesn't really fit in an endless runner setting. Eventually, I created a seperate section for the bosses, giving experienced players 
+            a harder challenge for exclusive skins.
+        </p>
+
+        <h2 id="art" class="section-title"><u>Art</u></h2>
+        <p class="section-content">
+          As of 2025, there are 256 unique Blobby skins. Each have a running and jumping animation that were all created in Aseprite. 
+          Some of them were very simple to make, while others left me scratching my head wondering how I could turn a complicated image 
+          into a 16x16 pixel blobfish. <br>
+          <img src="BlobbyRunGif AllSkins.gif">
+          What became even more difficult were the bosses. The shark, squid, and mimic all had to be massive scary creatures while still 
+          fitting in this world. The way I did this <i>(and any other complicated art)</i> was by following color and shading rules. Skip 
+          to the <a href="#bosses">next section</a> to learn more about the bosses.<br>
+          
+        </p>
+
+        <h2 id="bosses" class="section-title"><u>Bosses</u></h2>
+         <p class="section-content">
+          Some of my favorite levels in Geometry Dash were the boss levels. There was something so cool about seeing your once basic moves 
+          be transformed into an acrobatic display of dodging and attacking. I wanted to imitate this in my game, so I started with the king of 
+          the ocean: <b>The Shark.</b>
+          <img src="BlobbyRunGif SharkFight.gif">
+          I decided early on to give each of the bosses three attacks. The shark has a laser beam, a chomp attack, and a bomb blast <i>(shown above). </i>
+          Each attack was built on the foundation of nearly missing the attacks. I saw playtesters literally moving their body to try and avoid 
+          the Shark's chomps <i>(with little success).</i><br><br>
+
+          When I began working on the next boss, I knew it had to be different. Rather than focusing on pinpoint precision and tight jumps, 
+          I wanted to challenge the player in a <i>trippier</i> way. Enter: <b>The Squid.</b>
+          <img src="BlobbyRunGif SquidFight.gif">
+          The three attacks this time around was a blinding ink, a warping screen, and a reaching body. The Squid was a unique challenge 
+          in design as I had to make the jumps hard enough to justify it being the second boss but easy enough to sight-read when you 
+          can barely see your screen. In the end, the Squid provided a mind-bending but fair challenge that perfectly contrasted the Shark.
+          <br><br>
+
+          Despite the positive reception, I found that a lot of casual players could barely get past the Shark. Although I wanted them 
+          to be challenging, I began thinking of a way to make a boss fight that is much more forgiving. That's where <b>The Mimic</b> comes in.
+          <img src="BlobbyRunGif MimicFight.gif">
+          The Mimic's design and chase sequence is heavily inspired by the Giant Troll fight from Castle Crashers.<br>
+          I included small sections in a run that have two paths. The higher path is harder, but gives you keys that unlocks this new fight. 
+          You can attempt the fight as many times as you want with 1 key, meaning failure is not as punishing. Plus, it is a much shorter challenge 
+          that utilizes much floatier physics and hole-in-the wall style gameplay.
+         </p>
+
+        <h2 id="music" class="section-title"><u>Music</u></h2>
+        <h2 id="updates" class="section-title"><u>Updates</u></h2>
+       </div>  
+      
+    </div>
+  
+    <script>
+      const text = "blobby run";
+      const textEl = document.getElementById("typewriter-text");
+    
+      let i = 0;
+    
+      function typeWriter() {
+        if (i < text.length) {
+          textEl.textContent += text.charAt(i);
+          i++;
+          setTimeout(typeWriter, 100); // adjust speed here
+        }
+      }
+    
+      typeWriter();
+    </script>
+
+  </body>
+  
+</html>

@@ -54,6 +54,33 @@
       margin: 20px 0;
     }
 
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.0em;
+      font-weight: bold;
+      color: white;
+      text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.2);
+      margin: 20px 0 0 0;
+    }
+
+    .section-description {
+        font-size: 0.9em;
+        color: lightgray;
+        padding: 0 10px;
+        }
+
+  .section-content {
+        width: 75%;
+        margin: 40px auto;
+        background-color: black;
+        border: 4px solid white;
+       /* border-left: 4px solid white;
+        border-right: 4px solid white;*/
+        padding: 12px 0;
+        box-sizing: border-box;
+        border-radius: 8px;
+    }
+
     .game-container {
       display: flex;
       flex-wrap: wrap;
@@ -158,6 +185,33 @@
     </div>
   </div>
 
+  
+    <div class="section-container">
+      <div class="section-title" >
+          my published game
+        </div>
+        <div class="section-description">
+          This game was published on the iOS Appstore in 2023. It has received numerous updates that are archived below.
+        </div>
+    </div>
+  <div class="game-container">
+      <div class="game-card" onclick="location.href='Blobby-Run/blobby-run.html'">
+        <img src="Blobby Run Cover.png" alt="Blobby Run">
+        <h2 class="game-title-header blobby-title">Blobby Run</h2>
+        <p class="game-tagline">Join Blobby on his daring escape from sharks, squids, mimics, and more in thie high-speed endless runner!</p>
+      </div>
+  </div>
+
+<div class="section-container">
+    <div class="section-title" >
+        my game jam games
+      </div>
+      <div class="section-description">
+        These are games I have completed in a team or alone for different game jams. Each 
+        had a set theme and time limit to follow.
+      </div>
+  </div>
+
   <div class="game-container">
     <div class="game-card" onclick="location.href='Circus-of-Groove/circus-of-groove.html'">
       <img src="CSULB_Circus Cover.png" alt="Circus of Groove">
@@ -183,12 +237,12 @@
       <p class="game-tagline">Swing, punch, jump, and climb to escape from the evil lab!</p>
     </div>
 
-    <div class="game-card" onclick="location.href='https://lildyll.itch.io/blobby';">
+    <!-- <div class="game-card" onclick="location.href='https://lildyll.itch.io/blobby';">
       <img src="Blobby CoverArt.png" alt="Blobby">
       <h2 class="game-title-header blobby-title">Blobby</h2>
       <p class="game-tagline">Talk to clams, stomp on fish, and purchase upgrades to make Blobby even stronger! Can you find all the secrets? </p>
-    </div>
-  </div>
+    </div> -->
+  </div> 
 
   <script>
     const text = "my games";
